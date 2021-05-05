@@ -1,0 +1,22 @@
+{
+  "name": "a-simple-crud-app-with-node-express-and-mongodb",
+  "version": "1.0.0",
+  "description": "A Simple CRUD app with Node, Express, and MongoDB",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HajarHelal/A-Simple-CRUD-app-with-Node-Express-and-MongoDB.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HajarHelal/A-Simple-CRUD-app-with-Node-Express-and-MongoDB/issues"
+  },
+  "homepage": "https://github.com/HajarHelal/A-Simple-CRUD-app-with-Node-Express-and-MongoDB#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
