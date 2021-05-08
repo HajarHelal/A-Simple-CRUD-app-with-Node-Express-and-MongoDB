@@ -46,7 +46,7 @@ body {
 
 [data-position="quotes"] {
   grid-area: quotes;
-  overflow: scroll;
+ /*  overflow: scroll; */
 }
 
 [data-position] {

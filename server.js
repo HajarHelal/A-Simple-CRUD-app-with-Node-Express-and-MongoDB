@@ -1,19 +1,25 @@
+/* we use express in server.js by requiring it. */
 const express = require('express')
-const bodyParser= require('body-parser')
-const MongoClient = require('mongodb').MongoClient
 const app = express()
 
-app.listen(3000, function() {
-    console.log('listening on 3000')
-  })
-  // Make sure you place body-parser before your CRUD handlers!
+/* A middleware to tidy up the request object before we use them to handle reading data from the form*/
+const bodyParser= require('body-parser')
+// Make sure you place body-parser before your CRUD handlers!
+/* The urlencoded tells body-parser to extract data from the form element and add them to the body property in the request object */
 app.use(bodyParser.urlencoded({ extended: true }))
 
 
+/* create a server that browsers can connect to */
+app.listen(3000, function() {
+    console.log('listening on 3000')
+  })
+
+
+/*  connect to MongoDB */
+const MongoClient = require('mongodb').MongoClient
+/* connection string */
 const connectionString ="mongodb+srv://admin:1234@cluster0.gn1km.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
-MongoClient.connect(connectionString, {
-  useUnifiedTopology: true
-}, (err, client) => {
+MongoClient.connect(connectionString, {useUnifiedTopology: true}, (err, client) => {
   if (err) return console.error(err)
   console.log('Connected to Database')
   const db = client.db('awsome-quoats')
@@ -22,11 +28,15 @@ MongoClient.connect(connectionString, {
    // ========================
     // Middlewares
     // ========================
+    /* set view engine to ejs to tell Express we’re using EJS as the template engine */
   app.set('view engine', 'ejs')
+  /* to tell Express to make this public folder accessible to the public */
   app.use(express.static('public'))
+  /* to tell the server to accept JSON data */
   app.use(bodyParser.json())
 
   /* add */
+  /* The endpoint should be the value you placed in the "action" attribute in the form */
   app.post('/quotes', (req, res) => {
     quotesCollection.insertOne(req.body)
       .then(result => {
@@ -55,6 +65,7 @@ MongoClient.connect(connectionString, {
         }
       },
       {
+        /* Insert a document if no documents can be updated */
         upsert: true
       }
     )
@@ -78,26 +89,11 @@ MongoClient.connect(connectionString, {
       .catch(error => console.error(error))
   })
 
-
-
 })
 
-
-
-
-
+/* serve up an index.html page back to the browser. */
   /* app.get('/', (req, res) => { */
   /*   res.sendFile(__dirname + '/index.html') */
   /* }) */
 
-  /* app.get('/', (req, res) => { */
-  /*   res.send('Hello World') */
-  /* }) */
 
-  /* app.post('/quotes', (req, res) => { */
-  /*   console.log('Hellooooooooooooooooo!') */
-  /* }) */
-
-  /* app.post('/quotes', (req, res) => { */
-  /*   console.log(req.body) */
-  /* }) */

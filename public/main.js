@@ -1,7 +1,5 @@
-const update = document.querySelector('#update-button')
-const deleteButton = document.querySelector('#delete-button')
-const messageDiv = document.querySelector('#message')
 
+const update = document.querySelector('#update-button')
 update.addEventListener('click', _ => {
   fetch('/quotes', {
     method: 'put',
@@ -19,6 +17,8 @@ update.addEventListener('click', _ => {
     })
 })
 
+const deleteButton = document.querySelector('#delete-button')
+const messageDiv = document.querySelector('#message')
 deleteButton.addEventListener('click', _ => {
   fetch('/quotes', {
     method: 'delete',
