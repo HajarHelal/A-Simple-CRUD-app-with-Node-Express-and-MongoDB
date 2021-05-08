@@ -1,6 +1,6 @@
 # A-Simple-CRUD-app-with-Node-Express-and-MongoDB
-A Simple CRUD app with Node, Express, and MongoDB
+- A Simple CRUD app with Node, Express, and MongoDB
 
-This app was created by following the instructions in this tutorial :https://zellwk.com/blog/crud-express-mongodb/
+- This app was created by following the instructions in this tutorial :https://zellwk.com/blog/crud-express-mongodb/
 
-Demo:https://crud-demo.zellwk.com/
+- Demo:https://crud-demo.zellwk.com/
